@@ -283,7 +283,7 @@ app.start(document.getElementById('root'));
 
 如果一切正常，访问：http://127.0.0.1:8989/#/users ，可以看到：
 
-![image](https://zos.alipayobjects.com/rmsportal/mMYmqfgVIFPpudY.png)
+![image](https://zos.alipayobjects.com/rmsportal/VEahqBuszgiAifz.png)
 
 
 ### 小结
