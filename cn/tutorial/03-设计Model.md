@@ -2,7 +2,7 @@
 
 在了解了项目基本的结构划分以后，我们将要开始设计 model，在设计 model 之前，我们来回顾一下我们需要做的项目是什么样的：
 
-![user-dashboard](https://zos.alipayobjects.com/rmsportal/chvRgdJbobodFGP.png)
+![user-dashboard](https://zos.alipayobjects.com/rmsportal/QNLqcDPDkunuMRq.png)
 
 ### Model 的抽象
 从设计稿中我们可以看出，这部分功能基本是围绕 __以用户数据的基础__ 的操作，其中包含：
