@@ -1,6 +1,20 @@
 ## mock数据
 
-我们们采用了 [dora-plugin-proxy](https://github.com/dora-js/dora-plugin-proxy) 工具来完成了我们的数据 mock 功能：
+我们们采用了 [dora-plugin-proxy](https://github.com/dora-js/dora-plugin-proxy) 工具来完成了我们的数据 mock 功能。
+
+在 `package.json` 中：
+
+```json
+  "scripts": {
+    "start": "dora --plugins \"proxy,webpack,webpack-hmr\"",
+    "lint": "eslint --fix --ext .js,.jsx .",
+    "build": "atool-build"
+  }
+```
+
+的start命令中，可以看到使用 [dora](https://github.com/dora-js/dora) 工具的相关内容，其中`proxy`就是dora的一个插件，在你的项目不需要代理的时候，去除proxy插件即可。
+
+mock文件如下：
 
 ```js
 // ./src/mock/users.js
