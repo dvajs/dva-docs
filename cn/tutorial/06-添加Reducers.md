@@ -283,7 +283,7 @@ app.start(document.getElementById('root'));
 
 如果一切正常，访问：http://127.0.0.1:8989/#/users ，可以看到：
 
-![image](http://larkdoc-assets.oss-cn-hangzhou-zmf.aliyuncs.com/i9dpll1wodp0qfkp2nf0/image.png)
+![image](https://zos.alipayobjects.com/rmsportal/mMYmqfgVIFPpudY.png)
 
 
 ### 小结

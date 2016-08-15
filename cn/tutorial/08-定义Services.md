@@ -64,7 +64,7 @@ import { query } from '../services/users';
 
 代码写到这里，你可以看到浏览器中的显示是这样的：
 
-![image](http://larkdoc-assets.oss-cn-hangzhou-zmf.aliyuncs.com/rrp8si61kxteei8i9ws1/image.png)
+![image](https://zos.alipayobjects.com/rmsportal/blvkEJOTjrXCIVf.png)
 
 没错，我们虽然有了接口，但是我们还没有数据，在 dva 中，我们配套的工具能够很方便的模拟数据，这样就可以脱离服务器复杂的环境进行模拟的本地调试开发。下面一节就会一起来看下，如何 mock 数据。
 
