@@ -36,26 +36,26 @@ export default {
     modalType: 'create', // 弹出窗的类型（添加用户，编辑用户）
   },
 
-  subscriptions: [
-    function (dispatch) {
-      hashHistory.listen(location => {
+  subscriptions: {
+    setup({ dispatch, history }) {
+      history.listen(location => {
         if (location.pathname === '/users') {
           dispatch({
-            type: 'users/query',
+            type: 'querySuccess',
             payload: {}
           });
         }
       });
-    }
-  ],
+    },
+  },
 
   effects: {
-    *['users/query']({ payload }) {
-      yield put({ type: 'users/showLoading' });
+    *query({ payload }, { select, call, put }) {
+      yield put({ type: 'showLoading' });
       const { data } = yield call(query);
       if (data) {
         yield put({
-          type: 'users/query/success',
+          type: 'querySuccess',
           payload: {
             list: data.data,
             total: data.page.total,
@@ -64,30 +64,30 @@ export default {
         });
       }
     },
-    *['users/create'](){},
-    *['users/delete'](){},
-    *['users/update'](){},
+    *create(){},
+    *'delete'(){},
+    *update(){},
   },
   reducers: {
-    ['users/showLoading'](state, action){
+    showLoading(state, action){
       return { ...state, loading: true };
     }, // 控制加载状态的 reducer
-    ['users/showModal'](){}, // 控制 Modal 显示状态的 reducer
-    ['users/hideModal'](){},
+    showModal(){}, // 控制 Modal 显示状态的 reducer
+    hideModal(){},
     // 使用静态数据返回
-    ['users/query/success'](state, action){
+    querySuccess(state, action){
       return {...state, ...action.payload, loading: false};
     },
-    ['users/create/success'](){},
-    ['users/delete/success'](){},
-    ['users/update/success'](){},
+    createSuccess(){},
+    deleteSuccess(){},
+    updateSuccess(){},
   }
 }
 ```
 
-首先我们需要添加一行 `import { call, put } from 'dva/effects';` ，其中 call 和 put 是 dva 提供的方便操作 effects 的函数，简单理解 call 是调用执行一个函数而 put 则是相当于 dispatch 执行一个 action，更多可以参看 [redux-saga-in-chinese](https://github.com/superRaytin/redux-saga-in-chinese)。
+首先我们需要增加 `*query` 第二个参数 `*query({ payload }, { call, put })` ，其中 call 和 put 是 dva 提供的方便操作 effects 的函数，简单理解 call 是调用执行一个函数而 put 则是相当于 dispatch 执行一个 action，更多可以参看 [redux-saga-in-chinese](https://github.com/superRaytin/redux-saga-in-chinese)。
 
-而在 `'users/query'` 里面，可以看到我们处理异步的方式跟同步一样，所以能够很好的控制异步流程，这也是我们使用 Effects 的原因，关于相关的更多内容可以参看 [Generator 函数的含义与用法](http://www.ruanyifeng.com/blog/2015/04/generator.html)。
+而在 `query` 函数里面，可以看到我们处理异步的方式跟同步一样，所以能够很好的控制异步流程，这也是我们使用 Effects 的原因，关于相关的更多内容可以参看 [Generator 函数的含义与用法](http://www.ruanyifeng.com/blog/2015/04/generator.html)。
 
 这里我们把请求的处理直接写在了代码里面，接下来我们需要把它拆分到 `/services/` 里面统一处理：
 

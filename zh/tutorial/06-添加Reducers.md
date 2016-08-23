@@ -33,17 +33,17 @@ export default {
     modalType: 'create', // 弹出窗的类型（添加用户，编辑用户）
   },
   effects: {
-    *['users/query'](){},
-    *['users/create'](){},
-    *['users/delete'](){},
-    *['users/update'](){},
+    *query(){},
+    *create(){},
+    *'delete'(){},
+    *update(){},
   },
   reducers: {
-    ['users/showLoading'](){}, // 控制加载状态的 reducer
-    ['users/showModal'](){}, // 控制 Modal 显示状态的 reducer
-    ['users/hideModal'](){},
+    showLoading(){}, // 控制加载状态的 reducer
+    showModal(){}, // 控制 Modal 显示状态的 reducer
+    hideModal(){},
     // 使用静态数据返回
-    ['users/query/success'](state){
+    querySuccess(state){
       const mock = {
         total: 3,
         current: 1,
@@ -69,9 +69,9 @@ export default {
       };
       return {...state, ...mock, loading: false};
     },
-    ['users/create/success'](){},
-    ['users/delete/success'](){},
-    ['users/update/success'](){},
+    createSuccess(){},
+    deleteSuccess(){},
+    updateSuccess(){},
   }
 }
 ```
@@ -147,10 +147,12 @@ actions 的概念跟 reducers 一样，也是来自于 dva 封装的 redux，表
 
 ```javascript
 dispatch({
-	type: '', // action 的名称，与 reducers（effects） 对应
+	type: '', // action 的名称，与 reducers（effects） 对应, 
 	... // 调用时传递的参数，在 reducers（effects）可以获取
 });
 ```
+
+__需要注意的是：action的名称（type）如果实在 model 以外调用需要添加 namespace。__
 
 通过 dispatch 函数，可以通过 type 属性指定对应的 actions 类型，而这个类型名在 reducers（effects）会一一对应，从而知道该去调用哪一个 reducers（effects），除了 type 以外，其它对象中的参数随意定义，都可以在对应的 reducers（effects）中获取，从而实现消息传递，将最新的数据传递过去更新 model 的数据（state）。
 
@@ -160,7 +162,7 @@ dispatch({
 
 ```javascript
 dispatch({
-	type: 'users/query/success', // 调用哪个一个actions
+	type: 'users/querySuccess', // 调用哪个一个actions
 	payload: {}, // 调用时传递的参数
 });
 ```
@@ -171,7 +173,7 @@ dispatch({
 ...
 componentDidMount() {
 	this.props.dispatch({
-		type: 'xxxx',
+		type: 'model/action',
 	});
 }
 ...
@@ -197,34 +199,31 @@ export default {
   },
 
   // Quick Start 已经介绍过 subscriptions 的概念，这里不在多说
-  subscriptions: [
-    function (dispatch) {
-		  // 监听路由变化
-      hashHistory.listen(location => {
-			  // 如果路径是 /users
-				// 则发起一个 action
+  subscriptions: {
+    setup({ dispatch, history }) {
+      history.listen(location => {
         if (location.pathname === '/users') {
           dispatch({
-            type: 'users/query/success',
+            type: 'querySuccess',
             payload: {}
           });
         }
       });
-    }
-  ],
+    },
+  },
 
   effects: {
-    *['users/query'](){},
-    *['users/create'](){},
-    *['users/delete'](){},
-    *['users/update'](){},
+    *query(){},
+    *create(){},
+    *'delete'(){},
+    *update(){},
   },
   reducers: {
-    ['users/showLoading'](){}, // 控制加载状态的 reducer
-    ['users/showModal'](){}, // 控制 Modal 显示状态的 reducer
-    ['users/hideModal'](){},
+    showLoading(){}, // 控制加载状态的 reducer
+    showModal(){}, // 控制 Modal 显示状态的 reducer
+    hideModal(){},
     // 使用静态数据返回
-    ['users/query/success'](state){
+    querySuccess(state){
       const mock = {
         total: 3,
         current: 1,
@@ -250,9 +249,9 @@ export default {
       };
       return {...state, ...mock, loading: false};
     },
-    ['users/create/success'](){},
-    ['users/delete/success'](){},
-    ['users/update/success'](){},
+    createSuccess(){},
+    deleteSuccess(){},
+    updateSuccess(){},
   }
 }
 ```

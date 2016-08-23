@@ -33,16 +33,17 @@ export default {
     total: null,
   },
 	effects: {
-		*['users/query'](){},
-		*['users/create'](){},
-		*['users/delete'](){},
-		*['users/update'](){},
+		*query(){},
+		*create(){},
+		// 因为delete是关键字
+		*'delete'(){},
+		*update(){},
 	},
 	reducers: {
-		['users/query/success'](){},
-		['users/create/success'](){},
-		['users/delete/success'](){},
-		['users/update/success'](){},
+		querySuccess(){},
+		createSuccess(){},
+		deleteSuccess(){},
+		updateSuccess(){},
 	}
 }
 
@@ -71,28 +72,28 @@ export default {
     modalType: 'create', // 弹出窗的类型（添加用户，编辑用户）
   },
 	effects: {
-		*['users/query'](){},
-		*['users/create'](){},
-		*['users/delete'](){},
-		*['users/update'](){},
+		*query(){},
+		*create(){},
+		*'delete'(){},
+		*update(){},
 	},
 	reducers: {
-		['users/showLoading'](){}, // 控制加载状态的 reducer
-		['users/showModal'](){}, // 控制 Modal 显示状态的 reducer
-		['users/hideModal'](){},
-		['users/query/success'](){},
-		['users/create/success'](){},
-		['users/delete/success'](){},
-		['users/update/success'](){},
+		showLoading(){}, // 控制加载状态的 reducer
+		showModal(){}, // 控制 Modal 显示状态的 reducer
+		hideModal(){},
+		querySuccess(){},
+		createSuccess(){},
+		deleteSuccess(){},
+		updateSuccess(){},
 	}
 }
 
 ```
-需要注意的是，有可能初次接触到 `[name](){}` 的语法有些陌生，这种写法可以看成是：
+需要注意的是，有可能初次接触到 `name(){}` 的语法有些陌生，这种写法可以看成是：
 ```javascript
-[name]: function(){}
+name: function(){}
 ```
-的简写，另外，`*[name](){}` 前面的 `*` 号，表示这个方法是一个 __Generator函数__，具体可以参看[Generator 函数的含义与用法](http://www.ruanyifeng.com/blog/2015/04/generator.html)
+的简写，另外，`*name(){}` 前面的 `*` 号，表示这个方法是一个 __Generator函数__，具体可以参看[Generator 函数的含义与用法](http://www.ruanyifeng.com/blog/2015/04/generator.html)
 
 回到代码，可以看到，我们将业务状态也一并放到 model 当中去了，这样所有状态的变化都会在 model 中控制，会跟容易跟踪和操作。
 
