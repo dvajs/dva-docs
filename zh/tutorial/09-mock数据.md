@@ -60,4 +60,4 @@ module.exports = {
 
 到此为止，我们围绕 UserList 组件的实现，从各方面展示了 dva 项目的设计思路以及方法，剩下的样例项目内容大同小异，关于应用中其它组件的实现和相关内容，请参看[完整内容](https://github.com/dvajs/dva/tree/master/examples/user-dashboard)。
 
-下一步，进入[添加样式](./10-添加样式.md)
+下一步，进入[添加样式](./10-添加样式.md)。

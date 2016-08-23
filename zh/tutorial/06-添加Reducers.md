@@ -147,12 +147,12 @@ actions 的概念跟 reducers 一样，也是来自于 dva 封装的 redux，表
 
 ```javascript
 dispatch({
-	type: '', // action 的名称，与 reducers（effects） 对应, 
+	type: '', // action 的名称，与 reducers（effects）对应
 	... // 调用时传递的参数，在 reducers（effects）可以获取
 });
 ```
 
-__需要注意的是：action的名称（type）如果实在 model 以外调用需要添加 namespace。__
+__需要注意的是：action的名称（type）如果是在 model 以外调用需要添加 namespace。__
 
 通过 dispatch 函数，可以通过 type 属性指定对应的 actions 类型，而这个类型名在 reducers（effects）会一一对应，从而知道该去调用哪一个 reducers（effects），除了 type 以外，其它对象中的参数随意定义，都可以在对应的 reducers（effects）中获取，从而实现消息传递，将最新的数据传递过去更新 model 的数据（state）。
 
@@ -181,7 +181,7 @@ componentDidMount() {
 
 不过在本例中采用另一种发起 action 的场景，在本例中获取用户数据信息的时机就是访问 /users/ 这个页面，所以我们可以监听路由信息，只要路径是 /users/ 那么我们就会发起 action，获取用户数据：
 
-```
+```javascript
 // ./src/models/users.js
 import { hashHistory } from 'dva/router';
 
@@ -288,5 +288,5 @@ app.start(document.getElementById('root'));
 ### 小结
 在这个例子中，我们在 合适的时机（进入 /users/ ）发起（dispatch）了一个 action，修改了 model 的数据，并且通过 Container Components 关联了 model，通过 props 传递到 Presentation Components，组件成功显示。如果你想了解更多关于 reducers & actions 的信息，可以参看 [redux](http://redux.js.org/)。
 
-下一步，进入[添加Effects](./07-添加Effects.md)
+下一步，进入[添加Effects](./07-添加Effects.md)。
 

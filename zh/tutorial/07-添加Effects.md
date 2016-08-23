@@ -13,7 +13,6 @@ Effects 来源于 dva 封装的底层库 [redux-sagas](http://yelouafi.github.io
 ```jsx
 // ./src/models/users.js
 import { hashHistory } from 'dva/router';
-import { call, put, select } from 'dva/effects';
 //import { create, remove, update, query } from '../services/users';
 
 // 处理异步请求
@@ -85,7 +84,7 @@ export default {
 }
 ```
 
-首先我们需要增加 `*query` 第二个参数 `*query({ payload }, { call, put })` ，其中 call 和 put 是 dva 提供的方便操作 effects 的函数，简单理解 call 是调用执行一个函数而 put 则是相当于 dispatch 执行一个 action，更多可以参看 [redux-saga-in-chinese](https://github.com/superRaytin/redux-saga-in-chinese)。
+首先我们需要增加 `*query` 第二个参数 `*query({ payload }, { select, call, put })` ，其中 call 和 put 是 dva 提供的方便操作 effects 的函数，简单理解 call 是调用执行一个函数而 put 则是相当于 dispatch 执行一个 action，而 select 则可以用来访问其它 model，更多可以参看 [redux-saga-in-chinese](https://github.com/superRaytin/redux-saga-in-chinese)。
 
 而在 `query` 函数里面，可以看到我们处理异步的方式跟同步一样，所以能够很好的控制异步流程，这也是我们使用 Effects 的原因，关于相关的更多内容可以参看 [Generator 函数的含义与用法](http://www.ruanyifeng.com/blog/2015/04/generator.html)。
 
@@ -101,5 +100,5 @@ async function query(params) {
 
 关于 async 的用法，可以参看 [async 函数的含义和用法](http://www.ruanyifeng.com/blog/2015/05/async.html)，需要注意的是，无论是 Generator 函数，yield 亦或是 async 目的只有一个： __让异步编写跟同步一样__ ，从而能够很好的控制执行流程。
 
-下一步，进入[定义Services](./08-定义Services.md)
+下一步，进入[定义Services](./08-定义Services.md)。
 
