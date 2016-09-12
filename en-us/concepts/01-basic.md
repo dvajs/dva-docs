@@ -23,7 +23,7 @@ console.log(app._store); // top state
 
 `type AsyncAction = any`
 
-Just like Redux's Action, in dva, action is a plain object that represents an intention to change the state. Actions are the only way to get data into the store. Any data, whether from UI events, network callbacks, or other sources such as WebSockets needs to eventually be dispatched as actions.action.(ps:Ps:dispatch  is realized trhough props by connecting components.) 
+Just like Redux's Action, in dva, action is a plain object that represents an intention to change the state. Actions are the only way to get data into the store. Any data, whether from UI events, network callbacks, or other sources such as WebSockets needs to eventually be dispatched as actions.action.(ps:dispatch  is realized trhough props by connecting components.) 
 
 ```javascript
 dispatch({
