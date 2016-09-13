@@ -1,6 +1,6 @@
 # Getting Started
 
-[以中文版查看此文](../zh/getting-started.md)
+[以中文版查看此文](../zh-cn/getting-started.md)
 
 > This article will lead you to create [dva](https://github.com/dvajs/dva) app quickly, and learn all new concepts.
 

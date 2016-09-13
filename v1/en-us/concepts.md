@@ -1,6 +1,6 @@
 # Concepts
 
-[以中文版查看此文](../zh/concepts.md)
+[以中文版查看此文](../zh-cn/concepts.md)
 
 ## Data Flow
 
@@ -39,7 +39,7 @@ dispatch({
 
 A dispatching function (or simply dispatch function) is a function that accepts an action or an async action; it then may or may not dispatch one or more actions to the store.
 
-Dispatching function is a function for triggering action, action is the only way to change state, but it just describes an action. while dispatch can be regarded as a way to trigger this action, and Reducer is to describe how to change state.
+Dispatching function is a function for triggering action, action is the only way to change state, but it just describes an action. while dispatch can be regarded as a way to trigger this action, and Reducer is to describe how to change state. 
 
 ```javascript
 dispatch({
