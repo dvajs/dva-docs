@@ -1,12 +1,14 @@
-## Basic
+# Concepts
 
-### Data Flow
+[以中文版查看此文](../zh/concepts.md)
+
+## Data Flow
 
 ![pic](https://camo.githubusercontent.com/c826ff066ed438e2689154e81ff5961ab0b9befe/68747470733a2f2f7a6f732e616c697061796f626a656374732e636f6d2f726d73706f7274616c2f505072657245414b62496f445a59722e706e67)
 
-### Models
+## Models
 
-#### State
+### State
 
 `type State = any`
 
@@ -19,7 +21,7 @@ const app = dva();
 console.log(app._store); // top state
 ```
 
-#### Action
+### Action
 
 `type AsyncAction = any`
 
@@ -31,7 +33,7 @@ dispatch({
 });
 ```
 
-#### dispatch function
+### dispatch function
 
 `type dispatch = (a: Action) => Action`
 
@@ -46,7 +48,7 @@ dispatch({
 });
 ```
 
-#### Reducer
+### Reducer
 
 `type Reducer<S, A> = (state: S, action: A) => S`
 
@@ -63,14 +65,14 @@ Reducer's concepets from FP:
 
 In dva, reducers accumule current model's state. There are some things need to be notice that reducer must be [pure function](https://github.com/MostlyAdequate/mostly-adequate-guide/blob/master/ch3.md) and every caclulated data must be [immutable data](https://github.com/MostlyAdequate/mostly-adequate-guide/blob/master/ch3.md#reasonable).
 
-#### Effect
+### Effect
 
 In dva, we use [redux-sagas](http://yelouafi.github.io/redux-saga/) to control asynchronous flow. 
 You can learn more in [Mostly adequate guide to FP](https://github.com/MostlyAdequate/mostly-adequate-guide).
 
 In our applications, the most well-known side effect is asynchronous operation, it comes from the conception of fuctional programing, it is called side effect because it makes our function impure, and the same input may not result in the same output.
 
-#### Subscription
+### Subscription
 
 Subscriptions is a way to get data from source, it is come from elm.
 
@@ -89,10 +91,9 @@ app.model({
 });
 ```
 
-### Router
+## Router
 
 Hereby router usually means frontend router. Because our current app is singel page app, frontend codes are required to control the router logics. Through History API provided by the browser, we can monitor the change of the browser's url, so as to control the router.
-
 
 dva provide `router` function to control router, based on [react-router](https://github.com/reactjs/react-router)。
 
@@ -105,18 +106,15 @@ app.router(({history}) =>
 );
 ```
 
-### Route Components
+## Route Components
 
 In dva, we restrict container components to route componenst, because we use page dimension to design container components.
 
 therefore, almost all connet model componets are route components, route components in `/routes/` directory, presentational Components in `/components/` directory.
 
-#### References
+## References
 - [redux docs](http://redux.js.org/docs/Glossary.html)
 - [Mostly adequate guide to FP](https://github.com/MostlyAdequate/mostly-adequate-guide)
 - [choo docs](https://github.com/yoshuawuyts/choo)
 - [elm](http://elm-lang.org/blog/farewell-to-frp)
-
-
-
 

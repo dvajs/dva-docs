@@ -1,5 +1,7 @@
 # 快速上手
 
+[View this in English](../en-us/getting-started.md)
+
 > 本章节会引导开发者快速搭建 [dva](https://github.com/dvajs/dva) 项目，并熟悉他的所有概念。
 
 最终效果：
@@ -417,4 +419,4 @@ Child
 
 通过完成这个简单的例子，大家前面的问题是否都已经有了答案? 以及是否熟悉了 dva 包含的概念：model, router, reducers, effects, subscriptions ？
 
-下一步可以进入 [tutorial](./tutorial/01-概要.md) 了解更多
+下一步可以进入 [tutorial](./tutorial/01-概要.md) 了解更多。

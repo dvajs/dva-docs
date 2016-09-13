@@ -1,6 +1,8 @@
-## 基本概念
+# 基本概念
 
-### 数据流向
+[View this in English](../en-us/concepts.md)
+
+## 数据流向
 
 数据的改变发生通常是通过用户交互行为或者浏览器行为（如路由跳转等）触发的，当此类行为会改变数据的时候可以通过 `dispatch` 发起一个 action，如果是同步行为会直接通过 `Reducers` 改变 `State` ，如果是异步行为（副作用）会先出发 `Effects` 然后流向 `Reducers` 最终改变 `State`，所以在 dva 中，数据流向非常清晰简明，并且思路基本跟开源社区保持一致（也是来自于开源社区）。
 
@@ -13,9 +15,9 @@
 └───────────── States ◀─────────────────────┘
 ```
 
-### Models
+## Models
 
-#### State
+### State
 
 `type State = any`
 
@@ -28,7 +30,7 @@ const app = dva();
 console.log(app._store); // 顶部的 state 数据
 ```
 
-#### Action
+### Action
 
 `type AsyncAction = any`
 
@@ -39,7 +41,7 @@ dispatch({
 });
 ```
 
-#### dispatch 函数
+### dispatch 函数
 
 `type dispatch = (a: Action) => Action`
 
@@ -54,7 +56,7 @@ dispatch({
 });
 ```
 
-#### Reducer
+### Reducer
 
 `type Reducer<S, A> = (state: S, action: A) => S`
 
@@ -71,13 +73,13 @@ Reducer 的概念来自于是函数式编程，很多语言中都有 reduce API�
 
 在 dva 中，reducers 聚合积累的结果是当前 model 的 state 对象。通过 actions 中传入的值，与当前 reducers 中的值进行运算获得新的值（也就是新的 state）。需要注意的是 Reducer 必须是[纯函数](https://github.com/MostlyAdequate/mostly-adequate-guide/blob/master/ch3.md)，所以同样的输入必然得到同样的输出，它们不应该产生任何副作用。并且，每次一的计算都应该使用[immutable data](https://github.com/MostlyAdequate/mostly-adequate-guide/blob/master/ch3.md#reasonable)，这种特性简单理解就是每次操作都是返回一个全新的数据（独立，纯净），所以热重载和时间旅行这些功能才能够使用。
 
-#### Effect
+### Effect
 
 Effect 被称为副作用，在我们的应用中，最常见的就是异步操作。它来自于函数编程的概念，之所以叫副作用是因为它使得我们的函数变得不纯，同样的输入不一定获得同样的输出。
 
 dva 为了控制副作用的操作，底层引入了[redux-sagas](http://yelouafi.github.io/redux-saga/)做异步流程控制，由于采用了[generator的相关概念](http://www.ruanyifeng.com/blog/2015/04/generator.html)，所以将异步转成同步写法，从而将effects转为纯函数。至于为什么我们这么纠结于 __纯函数__，如果你想了解更多可以阅读[Mostly adequate guide to FP](https://github.com/MostlyAdequate/mostly-adequate-guide)，或者它的中文译本[JS函数式编程指南](https://www.gitbook.com/book/llh911001/mostly-adequate-guide-chinese/details)。
 
-#### Subscription
+### Subscription
 
 Subscriptions 是一种从 __源__ 获取数据的方法，它来自于 elm。
 
@@ -96,7 +98,7 @@ app.model({
 });
 ```
 
-### Router
+## Router
 
 这里的路由通常指的是前端路由，由于我们的应用现在通常是单页应用，所以需要前端代码来控制路由逻辑，通过浏览器提供的 [History API](http://mdn.beonex.com/en/DOM/window.history.html) 可以监听浏览器url的变化，从而控制路由相关操作。
 
@@ -111,20 +113,18 @@ app.router(({history}) =>
 );
 ```
 
-### Route Components
+## Route Components
 
 在[组件设计方法](../tutorial/04-组件设计方法.md)中，我们提到过 Container Components，在 dva 中我们通常将其约束为 Route Components，因为在 dva 中我们通常以页面纬度来设计 Container Components。
 
 所以在 dva 中，通常需要 connect Model的组件都是 Route Components，组织在`/routes/`目录下，而`/components/`目录下则是纯组件（Presentational Components）。
 
-#### 参考引申
+## 参考引申
+
 - [redux docs](http://redux.js.org/docs/Glossary.html)
 - [redux docs 中文](http://cn.redux.js.org/index.html)
 - [Mostly adequate guide to FP](https://github.com/MostlyAdequate/mostly-adequate-guide)
 - [JS函数式编程指南](https://www.gitbook.com/book/llh911001/mostly-adequate-guide-chinese/details)
 - [choo docs](https://github.com/yoshuawuyts/choo)
 - [elm](http://elm-lang.org/blog/farewell-to-frp)
-
-
-
 
