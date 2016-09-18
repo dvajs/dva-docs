@@ -18,7 +18,7 @@ Some questions you may ask.
 2. How to organize code after created app?
 3. How to build, deploy and publish after development?
 
-And somethins about code organization.
+And somethings about code organization.
 
 1. How to write Component?
 1. How to write CSS?
@@ -77,7 +77,7 @@ Open http://localhost:8989/ in browser. If success, you will see a page with "He
 
 ## Define models
 
-When get the task, you should not write code immediatly. But recommend to do state design in `god mode`.
+When get the task, you should not write code immediately. But recommend to do state design in `god mode`.
 
 1. design models
 2. design components
@@ -99,7 +99,7 @@ app.model({
 
 ## Write components
 
-After designed model, we start to write component. Recommend to organize Component with [stateless functions](https://facebook.github.io/react/docs/reusable-components.html#stateless-functions). Because we don't need state almostly in dva architecture.
+After designed model, we start to write component. Recommend to organize Component with [stateless functions](https://facebook.github.io/react/docs/reusable-components.html#stateless-functions). Because we don't need state almost in dva architecture.
 
 ```javascript
 import styles from './index.less';
@@ -132,7 +132,7 @@ Notice:
 
 We need two reducers, `add` and `minus`. Please notice `add` will only be recorded if it's highest.
 
-> Notice: `add` and `minus` don't need to add namespace prefix in `count` model. But if outside the model, action must prefix namespace seperated with `/`. e.g. `count/add`.
+> Notice: `add` and `minus` don't need to add namespace prefix in `count` model. But if outside the model, action must prefix namespace separated with `/`. e.g. `count/add`.
 
 ```diff
 app.model({
@@ -165,7 +165,7 @@ Notice:
 
 > Remember `count` and `dispatch` props used in the Component before? Where are them come from?
 
-After defined Model and Component, we need to connect them together. After connect, Component can use the data from Model, and Model can receive actions dispatched from Component.
+After define Model and Component, we need to connect them together. After connect, Component can use the data from Model, and Model can receive actions dispatched from Component.
 
 In this task, we only need to bind `count` .
 
@@ -204,7 +204,7 @@ Refresh page in browser, if success, you will see page below.
 
 ## Add StyleSheet
 
-We define stylesheet in `css modules`, which doesn't have many difference from normal css. Because we have already hooked className in Component, at this moment, we only need to replace `index.less` with follow content:
+We define stylesheet in `css modules`, which doesn't have many differences from normal css. Because we have already hooked className in Component, at this moment, we only need to replace `index.less` with follow content:
 
 ```css
 .normal {
@@ -276,9 +276,9 @@ Notice:
 
 Refresh you browser, if success, it should have all the effects of beginning gif.
 
-## Subscribe Keboard Event
+## Subscribe Keyboard Event
 
-> After implemented mouse click speed test, how to implement keyboard click speed test? 
+> After implemented mouse click speed test, how to implement keyboard click speed test?
 
 There is a concept called `Subscription` from dva, which is from [elm 0.17](http://elm-lang.org/blog/farewell-to-frp).
 
@@ -416,6 +416,6 @@ After build success, you can find compiled files in `dist` directory.
 
 ## What's Next
 
-After complete this app, do you have answer of all the questions in the begenning? Do you understand ths concepts in dva, like `model`, `router`, `reducers`, `effects` and `subscriptions` ?
+After complete this app, do you have answer of all the questions in the beginning? Do you understand this concepts in dva, like `model`, `router`, `reducers`, `effects` and `subscriptions` ?
 
-Next, you can view [dva offical library](https://github.com/dvajs/dva) for more infomation.
+Next, you can view [dva official library](https://github.com/dvajs/dva) for more information.
