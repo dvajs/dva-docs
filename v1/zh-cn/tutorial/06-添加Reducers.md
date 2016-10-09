@@ -106,7 +106,7 @@ function Users({ location, dispatch, users }) {
 
   const userSearchProps={};
   const userListProps={
-		dataSource: list,
+		dataSource: list.data,
 		total,
 		loading,
 		current,
