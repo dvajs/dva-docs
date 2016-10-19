@@ -140,7 +140,7 @@ export default connect(mapStateToProps)(Users);
 
 在之前的 __组件设计__ 中讲到了 `Presentational Component` 的设计概念，在订阅了数据以后，就可以通过 `props` 访问到 modal 的数据了，而 UserList 展示组件的数据，也是 `Container Component` 通过 `props` 传递的过来的。
 
-组件和 model 建立了关联关系以后，如果在组件中获取 reduers 的数据呢，或者如何调用 reducers呢，就是需要发起一个 action。
+组件和 model 建立了关联关系以后，如何在组件中获取 reduers 的数据呢，或者如何调用 reducers呢，就是需要发起一个 action。
 
 ### 发起 Actions
 actions 的概念跟 reducers 一样，也是来自于 dva 封装的 redux，表达的概念是发起一个修改数据的行为，主要的作用是传递信息：
@@ -162,7 +162,7 @@ __需要注意的是：action的名称（type）如果是在 model 以外调用�
 
 ```javascript
 dispatch({
-	type: 'users/querySuccess', // 调用哪个一个actions
+	type: 'users/querySuccess', // 调用一个actions
 	payload: {}, // 调用时传递的参数
 });
 ```
