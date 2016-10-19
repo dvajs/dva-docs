@@ -73,7 +73,7 @@ export default {
     }, // 控制加载状态的 reducer
     showModal(){}, // 控制 Modal 显示状态的 reducer
     hideModal(){},
-    // 使用静态数据返回
+    // 使用服务器数据返回
     querySuccess(state, action){
       return {...state, ...action.payload, loading: false};
     },
