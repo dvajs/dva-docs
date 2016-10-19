@@ -81,7 +81,7 @@ export default {
 ### 关联 Model
 
 ```jsx
-// ./src/routes/users.jsx
+// ./src/routes/Users.jsx
 import React, { Component, PropTypes } from 'react';
 
 // 引入 connect 工具函数
