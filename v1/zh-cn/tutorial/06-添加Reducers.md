@@ -50,7 +50,7 @@ export default {
         loading: false,
         list: [
           {
-	    id: 1,
+            id: 1,
             name: '张三',
             age: 23,
             address: '成都',
