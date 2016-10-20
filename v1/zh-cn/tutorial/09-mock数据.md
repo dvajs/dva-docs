@@ -44,11 +44,8 @@ module.exports = {
 
     res.json({
       success: true,
-      data,
-      page: {
-        current: 1,
-        total: 100,
-      }
+      data: data.data,
+      page: data.page
     });
   },
 };
