@@ -281,7 +281,7 @@ app.model({
 
 > 在实现了鼠标测速之后，怎么实现键盘测速呢? 
 
-在 dva 里有个叫 subscriontions 的概念，他来自于 [elm](http://elm-lang.org/blog/farewell-to-frp)。
+在 dva 里有个叫 subscriptions 的概念，他来自于 [elm](http://elm-lang.org/blog/farewell-to-frp)。
 
 Subscription 语义是订阅，用于订阅一个数据源，然后根据条件 dispatch 需要的 action。数据源可以是当前的时间、服务器的 websocket 连接、keyboard 输入、geolocation 变化、history 路由变化等等。
 
