@@ -1,6 +1,6 @@
 ## mock数据
 
-我们们采用了 [dora-plugin-proxy](https://github.com/dora-js/dora-plugin-proxy) 工具来完成了我们的数据 mock 功能。
+我们采用了 [dora-plugin-proxy](https://github.com/dora-js/dora-plugin-proxy) 工具来完成了我们的数据 mock 功能。
 
 在 `package.json` 中：
 
