@@ -61,6 +61,7 @@ $ dva new myApp --demo
 
 ```bash
 $ cd myApp
+$ npm install
 $ npm start
 ```
 
