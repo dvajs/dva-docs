@@ -6,8 +6,8 @@
 也许你在迷惑，为什么会叫做 reducer 这个名字，你或许知道 reduce 这个方法，在很多程序语言中，数组类型都具备 reduce 方法，而这个方法的功能就是聚合，比如下面这个在 javascript 中的例子：
 
 ```javascript
-[{x:1},{y:2},{z:3}].reduce(function(prev, next){ 
-    return Object.assign(prev, next); 
+[{x:1},{y:2},{z:3}].reduce(function(prev, next){
+    return Object.assign(prev, next);
 })
 //return {x:1, y:2, z:3}
 ```
@@ -79,7 +79,7 @@ export default {
 }
 ```
 
-我们把之前 `UserList` 组件中模拟的静态数据，移动到了 reducers 中，通过调用 `'users/query/success'` 这个 reducer，我们就可以将 Users Modal 的数据变成静态数据，那么我们如何调用这个 reducer，能够让这个数据传入 UserList 组件呢，接下来需要做的是：__关联Model__。
+我们把之前 `UserList` 组件中模拟的静态数据，移动到了 reducers 中，通过调用 `'users/query/success'` 这个 reducer，我们就可以将 Users Model 的数据变成静态数据，那么我们如何调用这个 reducer，能够让这个数据传入 UserList 组件呢，接下来需要做的是：__关联Model__。
 
 ### 关联 Model
 
@@ -141,7 +141,7 @@ function mapStateToProps({ users }) {
 export default connect(mapStateToProps)(Users);
 ```
 
-在之前的 __组件设计__ 中讲到了 `Presentational Component` 的设计概念，在订阅了数据以后，就可以通过 `props` 访问到 modal 的数据了，而 UserList 展示组件的数据，也是 `Container Component` 通过 `props` 传递的过来的。
+在之前的 __组件设计__ 中讲到了 `Presentational Component` 的设计概念，在订阅了数据以后，就可以通过 `props` 访问到 model 的数据了，而 UserList 展示组件的数据，也是 `Container Component` 通过 `props` 传递的过来的。
 
 组件和 model 建立了关联关系以后，如何在组件中获取 reduers 的数据呢，或者如何调用 reducers呢，就是需要发起一个 action。
 
@@ -292,4 +292,3 @@ app.start(document.getElementById('root'));
 在这个例子中，我们在 合适的时机（进入 /users/ ）发起（dispatch）了一个 action，修改了 model 的数据，并且通过 Container Components 关联了 model，通过 props 传递到 Presentation Components，组件成功显示。如果你想了解更多关于 reducers & actions 的信息，可以参看 [redux](http://redux.js.org/)。
 
 下一步，进入[添加Effects](./07-添加Effects.md)。
-
