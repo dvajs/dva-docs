@@ -17,7 +17,7 @@
 mock文件如下：
 
 ```js
-// ./src/mock/users.js
+// ./mock/users.js
 'use strict';
 
 const qs = require('qs');
