@@ -73,7 +73,7 @@ webpack: bundle build is now finished.
 
 (Press `Ctrl-C` if you want to close server)
 
-Open http://localhost:8989/ in browser. If success, you will see a page with "Hello Dva".
+Open http://localhost:8000/ in browser. If success, you will see a page with "Hello Dva".
 
 ## Define models
 
