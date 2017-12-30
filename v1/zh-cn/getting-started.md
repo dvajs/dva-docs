@@ -163,7 +163,7 @@ app.model({
 
 ## 绑定数据
 
-> 还记得之前的 Component 里用到的 count 和 dispatch 吗? 会不会有疑问他们来自哪里? 
+> 还记得之前的 Component 里用到的 count 和 dispatch 吗? 会不会有疑问他们来自哪里?
 
 在定义了 Model 和 Component 之后，我们需要把他们连接起来。这样 Component 里就能使用 Model 里定义的数据，而 Model 中也能接收到 Component 里 dispatch 的 action 。
 
@@ -250,7 +250,7 @@ app.router(({history}) =>
 
 现在我们要开始处理异步任务，dva 通过对 model 增加 effects 属性来处理 side effect(异步任务)，这是基于 [redux-saga](https://github.com/yelouafi/redux-saga) 实现的，语法为 generator。(但是，这里不需要我们理解 generator，知道用法就可以了)
 
-在这个需求里，当用户点 + 按钮，数值加 1 之后，会额外触发一个 side effect，即延迟 1 秒之后数值 1 。
+在这个需求里，当用户点 + 按钮，数值加 1 之后，会额外触发一个 side effect，即延迟 1 秒之后数值减 1 。
 
 ```diff
 app.model({
@@ -279,7 +279,7 @@ app.model({
 
 ## 订阅键盘事件
 
-> 在实现了鼠标测速之后，怎么实现键盘测速呢? 
+> 在实现了鼠标测速之后，怎么实现键盘测速呢?
 
 在 dva 里有个叫 subscriptions 的概念，他来自于 [elm](http://elm-lang.org/blog/farewell-to-frp)。
 
