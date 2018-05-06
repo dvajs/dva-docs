@@ -85,7 +85,8 @@ export default {
 
 ```jsx
 // ./src/routes/Users.jsx
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 // 引入 connect 工具函数
 import { connect } from 'dva';
@@ -273,10 +274,10 @@ import 'antd/dist/antd.css';
 const app = dva();
 
 // 2. Model
-app.model(require('./models/users.js'));
+app.model(require('./models/users.js').default);
 
 // 3. Router
-app.router(require('./router'));
+app.router(require('./router').default);
 
 // 4. Start
 app.start(document.getElementById('root'));
