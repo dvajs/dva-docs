@@ -321,6 +321,7 @@ import { Router, Route } from 'dva/router';
 import React from 'react';
 import styles from './index.less';
 import key from 'keymaster';
+import './index.html';
 
 const app = dva();
 
